@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!--<div id="errors" class="err"></div>-->
+    <h1>Sign Up Form</h1>
+    <input type="text" id="first" class="name" placeholder="First Name" />
+    <div id="pw1_check" class="err">too short!</div>
+    <input type="text" id="Second" class="name" placeholder="Last Name" />
+    <div id="pw1_check1" class="err">too short!</div>
+    <input
+      type="text"
+      id="Email"
+      name="text1"
+      class="name"
+      placeholder="Email"
+    />
+    <div id="pw1_check2" class="err">
+      You have entered an invalid email address!
+    </div>
+    <input
+      type="password"
+      name="password1"
+      id="password1"
+      class="name"
+      placeholder="Password"
+    />
+    <input
+      type="password"
+      name="password2"
+      id="password2"
+      class="name"
+      placeholder="Confirm Password"
+    />
+    <div id="Error" class="err">Password Error</div>
+    <input
+      type="text"
+      name="num"
+      id="num"
+      class="name"
+      placeholder="Phone Number"
+    />
+    <div id="Error2" class="err">Number Error</div>
+    <button type="submit" id="submit1" onclick="submit1()">Sign Up</button>
+    <script>
+      var FirstName = document.getElementById("first");
+      var lastName = document.getElementById("Second");
+      var NameCheck = document.getElementById("pw1_check");
+      document.getElementById("pw1_check").style.display = "none";
+      document.getElementById("pw1_check1").style.display = "none";
+      document.getElementById("pw1_check2").style.display = "none";
+      document.getElementById("Error").style.display = "none";
+      document.getElementById("Error2").style.display = "none";
+      function submit1() {
+        if (FirstName.value.length < 5) {
+          document.getElementById("pw1_check").style.display = "block";
+        } else {
+          document.getElementById("pw1_check").style.display = "none";
+        }
+        if (lastName.value.length < 5) {
+          document.getElementById("pw1_check1").style.display = "block";
+        } else {
+          document.getElementById("pw1_check1").style.display = "none";
+        }
+        // Email Validation
+        var mailformat = /^[a-zA-Z0-9-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/;
+        var inputemail = document.getElementById("Email").value;
+        if (inputemail.match(mailformat)) {
+        } else {
+          document.getElementById("pw1_check2").style.display = "block";
+        }
+        // Password Validation
+        var password = document.getElementById("password1").value;
+        var confirmPassword = document.getElementById("password2").value;
+        if (password.length < 8 || password.length > 32) {
+          document.getElementById("Error").style.display = "block";
+        }
+        var passformat =
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])";
+        if (password.match(passformat)) {
+        } else {
+          document.getElementById("Error").style.display = "block";
+        }
+        if (password === confirmPassword) {
+        } else {
+          document.getElementById("Error").style.display = "block";
+        }
+        // Phone number Validation
+        var phoneNumber = "^(?:00|\\+)(?=.*[0-9])(?=.{12,})";
+        var usernumber = document.getElementById("num").value;
+        if (usernumber.match(phoneNumber)) {
+        } else {
+          document.getElementById("Error2").style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
